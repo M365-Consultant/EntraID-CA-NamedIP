@@ -12,7 +12,15 @@ The module is published on [PowerShell Gallery](https://www.powershellgallery.co
 
     Install-Module -Name M365cde.ConditionalAccessNamedIP -AllowPrerelease -Scope CurrentUser
 
+#Pre-Requirements
+The required modules are:
+- [Subnet](https://www.powershellgallery.com/packages/Subnet/)
+- [Microsoft.Graph.Identity.SignIns](https://www.powershellgallery.com/packages/Microsoft.Graph.Identity.SignIns/)
+
+It also requires a Microsoft Graph Connection.
+
 # Usage
+
 Retrieves IP addresses from trusted named locations
 ```
 Get-ConditionalAccessNamedIP -IsTrusted
