@@ -37,6 +37,8 @@ Get-ConditionalAccessNamedIP
 ```
 
 # Changelog
+- v0.0.3 Bugfix
+  - Bugfix on the output and supressed the welcome message for Connect-MgGraph.
 - v0.0.2 Bugfix / Changed Output
   - Output bugfix for Get-ConditionalAccessNamedIP.
   - Changed the output to return two properties: NamedLocation and IP.
