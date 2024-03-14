@@ -61,24 +61,44 @@ function Get-ConditionalAccessNamedIP {
     $IPRanges = $Null
     $IPRanges = $Location.AdditionalProperties['ipRanges']
     If ($IPRanges) {
-        ForEach ($Address in $IPRanges) {
-            $CAIPAddressRanges += $Address['cidrAddress']
-
+        foreach ($Address in $IPRanges) {
+            $item = New-Object PSObject -Property @{
+                Range = $Address['cidrAddress']
+                DisplayName = $Location.DisplayName
+            }
+            $CAIPAddressRanges += $item
         }
     }
     }
 
     # Iterate through each IP range and get the IP addresses by Get-Subnet
     foreach ($range in $CAIPAddressRanges) {
-        $subnet = Get-Subnet $range
-        $CAIPAddresses += $subnet.NetworkAddress.IPAddressToSTring
-        $CAIPAddresses += $subnet.BroadcastAddress.IPAddressToSTring
-        $CAIPAddresses += $subnet.HostAddresses
+        $subnet = Get-Subnet $range.Range
+
+        $NetworkAdress = New-Object PSObject -Property @{
+            IP = $subnet.NetworkAddress.IPAddressToSTring
+            NamedLocation = $range.DisplayName
+        }
+
+        $BroadcastAddress = New-Object PSObject -Property @{
+            IP = $subnet.BroadcastAddress.IPAddressToSTring
+            NamedLocation = $range.DisplayName
+        }
+
+        $CAIPAddresses += $NetworkAdress
+        $CAIPAddresses += $BroadcastAddress
+
+        foreach ($item in $subnet.HostAddresses) {
+            $item
+            $HostAddresses = New-Object PSObject -Property @{
+                IP = $item
+                NamedLocation = $range.DisplayName
+            }
+            $CAIPAddresses += $HostAddresses
+        }
     }
 
     # Return the IP addresses
-    Write-Output $IsTrusted
-    Write-Output $IsUntrusted
     $CAIPAddresses
 }
 

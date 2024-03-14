@@ -15,7 +15,7 @@ RootModule = 'M365cde.ConditionalAccessNamedIP.psm1'
 RequiredModules = @('Subnet', 'Microsoft.Graph.Identity.SignIns')
 
 # Version number of this module.
-ModuleVersion = '0.0.1'
+ModuleVersion = '0.0.2'
 
 # Supported PSEditions
  CompatiblePSEditions = @( 'Desktop', 'Core' )
@@ -70,6 +70,10 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = @'
+v0.0.2 - 2024-03-14
+Output bugfix for Get-ConditionalAccessNamedIP.
+Changed the output to return two properties: NamedLocation and IP.
+
 v0.0.1 - 2024-03-13
 Initial release of the module.
 '@
