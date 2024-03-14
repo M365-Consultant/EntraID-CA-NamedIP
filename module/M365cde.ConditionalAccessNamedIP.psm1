@@ -38,7 +38,7 @@ function Get-ConditionalAccessNamedIP {
     # Connect to Graph
     if (-not (Get-MgContext)) {
         # Connect to Graph
-        Connect-MgGraph -Scopes "Policy.Read.All"
+        Connect-MgGraph -Scopes "Policy.Read.All" -NoWelcome
     }
 
     # Get all named locations from conditional access
@@ -89,7 +89,6 @@ function Get-ConditionalAccessNamedIP {
         $CAIPAddresses += $BroadcastAddress
 
         foreach ($item in $subnet.HostAddresses) {
-            $item
             $HostAddresses = New-Object PSObject -Property @{
                 IP = $item
                 NamedLocation = $range.DisplayName

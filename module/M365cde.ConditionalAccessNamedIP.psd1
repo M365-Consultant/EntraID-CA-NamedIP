@@ -15,7 +15,7 @@ RootModule = 'M365cde.ConditionalAccessNamedIP.psm1'
 RequiredModules = @('Subnet', 'Microsoft.Graph.Identity.SignIns')
 
 # Version number of this module.
-ModuleVersion = '0.0.2'
+ModuleVersion = '0.0.3'
 
 # Supported PSEditions
  CompatiblePSEditions = @( 'Desktop', 'Core' )
@@ -70,6 +70,10 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = @'
+
+v0.0.3 - 2024-03-14
+Bugfix on the output and supressed the welcome message for Connect-MgGraph.
+
 v0.0.2 - 2024-03-14
 Output bugfix for Get-ConditionalAccessNamedIP.
 Changed the output to return two properties: NamedLocation and IP.
