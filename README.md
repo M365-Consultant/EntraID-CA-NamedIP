@@ -37,5 +37,8 @@ Get-ConditionalAccessNamedIP
 ```
 
 # Changelog
+- v0.0.2 Bugfix / Changed Output
+  - Output bugfix for Get-ConditionalAccessNamedIP.
+  - Changed the output to return two properties: NamedLocation and IP.
 - v0.0.1 First release
   - First release of this script
